@@ -6,16 +6,28 @@ sudo yum update -y
 sudo yum install git -y
 
 
-#-------java dependency for jenkins------------
+#------- Install Java 21 (Amazon Corretto) ---------
 
-sudo dnf install java-17-amazon-corretto -y
+sudo dnf install java-21-amazon-corretto -y
 
-#------------jenkins install-------------
-sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+# Verify Java version
+java -version
+
+#------------ Jenkins Install -------------
+
+sudo wget -O /etc/yum.repos.d/jenkins.repo \
+https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
-sudo yum install jenkins -y
+
+sudo dnf install jenkins -y
+
+# Enable and start Jenkins
 sudo systemctl enable jenkins
 sudo systemctl start jenkins
+
+# Check Jenkins status
+sudo systemctl status jenkins
 
 
 # ------------------install terraform ------------------
