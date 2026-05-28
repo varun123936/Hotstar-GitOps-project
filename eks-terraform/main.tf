@@ -145,6 +145,7 @@ data "aws_security_group" "selected" {
   resource "aws_eks_cluster" "eks" {
     name     = "project-eks"
     role_arn = aws_iam_role.master.arn
+    version  = var.cluster_version
 
     vpc_config {
       subnet_ids = [data.aws_subnet.subnet-1.id, data.aws_subnet.subnet-2.id]
@@ -164,10 +165,11 @@ data "aws_security_group" "selected" {
     cluster_name    = aws_eks_cluster.eks.name
     node_group_name = var.node_group_name
     node_role_arn   = aws_iam_role.worker.arn
+    version         = var.cluster_version
     subnet_ids      = [data.aws_subnet.subnet-1.id, data.aws_subnet.subnet-2.id]
     capacity_type   = "ON_DEMAND"
     disk_size       = 20
-    instance_types  = ["t2.small"]
+    instance_types  = ["c7i-flex.large"]
 
    
 
