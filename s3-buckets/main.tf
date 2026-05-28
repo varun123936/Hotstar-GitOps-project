@@ -3,10 +3,10 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "bucket1" {
-  bucket = "hotstaarumullaas"
+  bucket = "hotstar-terraform-state-ec2"
 
   tags = {
-    Name        = "hotstaarumullaas"
+    Name        = "hotstar-terraform-state-ec2"
     Environment = "dev"
   }
 }
@@ -19,10 +19,10 @@ resource "aws_s3_bucket_versioning" "bucket1_versioning" {
 }
 
 resource "aws_s3_bucket" "bucket2" {
-  bucket = "hotstaalurus"
+  bucket = "hotstar-terraform-state-eks-ecr"
 
   tags = {
-    Name        = "hotstaalurus"
+    Name        = "hotstar-terraform-state-eks-ecr"
     Environment = "dev"
   }
 }
